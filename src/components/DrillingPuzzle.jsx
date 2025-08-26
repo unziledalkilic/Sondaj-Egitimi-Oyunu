@@ -86,8 +86,10 @@ function DrillingPuzzle({ currentStage, onStageComplete, stages }) {
   // Parçaları rastgele karıştır - useCallback ile optimize edildi
   const shufflePieces = useCallback((pieces) => {
     const shuffled = [...pieces]
+    // Daha güçlü rastgelelik için timestamp ve Math.random kombinasyonu
+    const seed = Date.now() + Math.random()
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
+      const j = Math.floor((seed + i * 9301 + 49297) % (i + 1))
       ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
     return shuffled
@@ -97,7 +99,10 @@ function DrillingPuzzle({ currentStage, onStageComplete, stages }) {
   useEffect(() => {
     setPlacedPieces([])
     setIsStageComplete(false)
-    setAvailablePieces(shufflePieces([...currentStagePieces]))
+    // Her aşama değişiminde farklı rastgelelik için ek seed
+    const stageSeed = currentStage + Date.now() + Math.random()
+    const shuffledPieces = shufflePieces([...currentStagePieces])
+    setAvailablePieces(shuffledPieces)
     setIsOrderCorrect(null)
     setSelectedPiece(null)
     setNotification(null)

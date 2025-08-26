@@ -169,7 +169,6 @@ Oyun, farklı ekran boyutlarında optimal deneyim sunar:
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
 
-
 ---
 
 **Not:** Bu proje eğitim amaçlı geliştirilmiştir ve gerçek sondaj operasyonlarında kullanılmamalıdır.

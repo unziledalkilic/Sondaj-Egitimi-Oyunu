@@ -169,15 +169,6 @@ Oyun, farklı ekran boyutlarında optimal deneyim sunar:
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
 
-## 👨‍💻 Geliştirici
-
-**Ali Yaldız** - Petrol Mühendisliği Eğitimi için geliştirilmiştir.
-
-## 📞 İletişim
-
-Proje hakkında sorularınız için:
-- GitHub Issues kullanın
-- Email: [your-email@example.com]
 
 ---
 

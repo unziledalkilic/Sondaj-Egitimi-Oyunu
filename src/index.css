@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+
+.drop-zone {
+  transition: all 0.3s ease;
+}
+
+.drop-zone.hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px dashed #fff;
+}
+
+.puzzle-piece {
+  cursor: grab;
+  transition: all 0.3s ease;
+}
+
+.puzzle-piece:hover {
+  transform: scale(1.02);
+}
+
+.puzzle-piece:active {
+  cursor: grabbing;
+}

@@ -1,0 +1,211 @@
+.puzzle-piece {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.puzzle-piece::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.puzzle-piece:hover::before {
+  left: 100%;
+}
+
+.puzzle-piece.clickable {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.puzzle-piece.clickable:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 1);
+}
+
+.puzzle-piece.placed {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: rgba(160, 174, 192, 0.1);
+  border-color: #a0aec0;
+  transform: scale(0.95);
+}
+
+.piece-icon {
+  font-size: 28px;
+  margin-right: 18px;
+  color: #667eea;
+  flex-shrink: 0;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 12px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.piece-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.piece-name {
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 16px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.piece-size {
+  color: #4a5568;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 6px 15px;
+  border-radius: 25px;
+  display: inline-block;
+}
+
+.placed-check {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #48bb78;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+}
+
+/* Mobil uyumluluk için responsive tasarım */
+@media (max-width: 768px) {
+  .puzzle-piece {
+    padding: 12px;
+    min-height: 80px;
+    border-radius: 12px;
+  }
+  
+  .piece-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .piece-name {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .piece-size {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .puzzle-piece {
+    padding: 10px;
+    min-height: 70px;
+    border-radius: 10px;
+  }
+  
+  .piece-icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .piece-name {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  
+  .piece-size {
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+}
+
+/* Tablet için orta boyut optimizasyonu */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .puzzle-piece {
+    padding: 15px;
+    min-height: 90px;
+  }
+  
+  .piece-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .piece-name {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  
+  .piece-size {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+/* Büyük ekranlar için optimizasyon */
+@media (min-width: 1025px) {
+  .puzzle-piece {
+    padding: 18px;
+    min-height: 100px;
+  }
+  
+  .piece-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .piece-name {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .piece-size {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+/* Touch cihazlar için hover efektlerini devre dışı bırak */
+@media (hover: none) {
+  .puzzle-piece:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .puzzle-piece:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}

@@ -1,0 +1,431 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #2d3748;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 20px;
+  background: transparent;
+}
+
+
+
+.stages-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stage-button {
+  padding: 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4a5568;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.stage-button:hover::before {
+  left: 100%;
+}
+
+.stage-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.stage-button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.stage-button.completed {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 25px rgba(72, 187, 120, 0.4);
+}
+
+.instructions {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+
+
+.instructions h2 {
+  color: #2d3748;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.instructions p {
+  color: #4a5568;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.instructions ul {
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+.instructions li {
+  color: #4a5568;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+.instructions li::before {
+  content: '✨';
+  position: absolute;
+  left: -30px;
+  color: #667eea;
+}
+
+.start-button-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.start-button {
+  padding: 18px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.start-button:hover::before {
+  left: 100%;
+}
+
+.start-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.start-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .App {
+    padding: 15px;
+  }
+  
+  .header {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .stages-nav {
+    gap: 10px;
+  }
+  
+  .stage-button {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 100px;
+  }
+  
+  .instructions {
+    padding: 20px;
+  }
+}
+
+/* Mobil uyumluluk için responsive tasarım */
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+  
+  .main-content {
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .stage-progress {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .stage-indicator {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  
+  .completion-message {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .completion-message h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .completion-message p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .completion-message ul {
+    max-width: 100%;
+    margin: 15px auto;
+  }
+  
+  .completion-message li {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .next-stage-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .game-container {
+    gap: 15px;
+  }
+  
+  .puzzle-area {
+    order: 1;
+  }
+  
+  .pieces-area {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 5px;
+  }
+  
+  .main-content {
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .stage-progress {
+    gap: 10px;
+  }
+  
+  .stage-indicator {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  .completion-message {
+    padding: 15px;
+    margin: 15px;
+  }
+  
+  .completion-message h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .completion-message p {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .completion-message li {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .next-stage-button {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+/* Tablet için orta boyut optimizasyonu */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .App {
+    padding: 15px;
+  }
+  
+  .main-content {
+    gap: 25px;
+    padding: 20px;
+  }
+  
+  .stage-progress {
+    gap: 20px;
+  }
+  
+  .stage-indicator {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+  
+  .completion-message {
+    padding: 30px;
+    margin: 30px;
+  }
+  
+  .completion-message h3 {
+    font-size: 22px;
+  }
+  
+  .next-stage-button {
+    padding: 15px 25px;
+    font-size: 18px;
+  }
+}
+
+/* Büyük ekranlar için optimizasyon */
+@media (min-width: 1025px) {
+  .App {
+    padding: 20px;
+  }
+  
+  .main-content {
+    gap: 30px;
+    padding: 25px;
+  }
+  
+  .stage-progress {
+    gap: 25px;
+  }
+  
+  .stage-indicator {
+    font-size: 20px;
+    padding: 15px 25px;
+  }
+  
+  .completion-message {
+    padding: 40px;
+    margin: 40px;
+  }
+  
+  .completion-message h3 {
+    font-size: 24px;
+  }
+  
+  .next-stage-button {
+    padding: 18px 30px;
+    font-size: 20px;
+  }
+}
+
+/* Yatay mobil cihazlar için optimizasyon */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main-content {
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .stage-progress {
+    flex-direction: row;
+    gap: 15px;
+  }
+  
+  .completion-message {
+    padding: 15px;
+    margin: 15px;
+  }
+  
+  .completion-message h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .completion-message p {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .completion-message li {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+}
